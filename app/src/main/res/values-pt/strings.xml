@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Gerenciador de Tarefas</string>
+    <string name="hello_world">Olá Mundo!</string>
+    <string name="action_settings">Configurações</string>
+    <string name="lbl_login">Usuario</string>
+    <string name="lbl_password">Senha</string>
+    <string name="lbl_enter">Entrar</string>
+    <string name="msg_welcome">Bem Vindo %s!</string>
+    <string name="lbl_taskName">Nome da Tarefa</string>
+    <string name="lbl_taskDescription">Descrição da Tarefa</string>
+    <string name="button_saveTask">Salvar</string>
+    <string name="lbl_menu_add">Adicionar Tarefa</string>
+    <string name="msg_required">Campo obrigatório!</string>
+    <string name="msg_save_sucessfull">Salvo com sucesso!</string>
+
+</resources>
