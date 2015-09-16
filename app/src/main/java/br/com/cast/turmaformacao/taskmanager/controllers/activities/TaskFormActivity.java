@@ -1,4 +1,4 @@
-package br.com.cast.turmaformacao.taskmanager.activities;
+package br.com.cast.turmaformacao.taskmanager.controllers.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,8 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.io.Serializable;
 
 import br.com.cast.turmaformacao.taskmanager.R;
 import br.com.cast.turmaformacao.taskmanager.model.entities.Task;
@@ -21,6 +23,7 @@ public class TaskFormActivity extends AppCompatActivity {
     private EditText editTextDescription;
     private Button buttonSave;
     private Task task;
+    public static final String PARAM_TASK = "PARAM_TASK";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +37,13 @@ public class TaskFormActivity extends AppCompatActivity {
     }
 
     private void initTask() {
-        this.task = new Task();
+        Bundle extras = getIntent().getExtras();
+
+        if(extras != null){
+            this.task = (Task) extras.getParcelable(PARAM_TASK);
+        }
+
+        this.task = this.task == null ? new Task() : this.task;
     }
 
     private void bindButtonSave() {
@@ -46,13 +55,12 @@ public class TaskFormActivity extends AppCompatActivity {
 
                 String requiredMessage = TaskFormActivity.this.getString(R.string.msg_required);
 
-                if (!FormHelper.validateRequired(requiredMessage,editTextName)) {
+                if (!FormHelper.validateRequired(requiredMessage, editTextName)) {
                     bindTask();
-                    TaskBusinessServices.getInstance().save(task);
-                    Toast.makeText(TaskFormActivity.this,getString(R.string.msg_save_sucessfull),Toast.LENGTH_LONG).show();
+                    TaskBusinessServices.save(task);
+                    Toast.makeText(TaskFormActivity.this, getString(R.string.msg_save_sucessfull), Toast.LENGTH_LONG).show();
                     TaskFormActivity.this.finish();
                 }
-
             }
         });
     }
@@ -64,7 +72,7 @@ public class TaskFormActivity extends AppCompatActivity {
 
     private void bindEditTextName() {
         editTextName = (EditText) findViewById(R.id.editTextTaskName);
-        editTextName.setText(task.getDescription() == null ? "" : task.getDescription());
+        editTextName.setText(task.getName() == null ? "" : task.getName());
 
     }
 

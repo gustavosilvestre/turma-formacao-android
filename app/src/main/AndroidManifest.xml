@@ -3,12 +3,13 @@
     package="br.com.cast.turmaformacao.taskmanager">
 
     <application
+        android:name=".TaskManagerApplication.TaskManagerApplication"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".activities.LoginActivity"
+            android:name=".controllers.activities.LoginActivity"
             android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -16,13 +17,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".activities.TaskListActivity"
+            android:name=".controllers.activities.TaskListActivity"
             android:label="@string/app_name"></activity>
         <activity
-            android:name=".activities.ImcActivity"
+            android:name=".controllers.activities.ImcActivity"
             android:label="@string/app_name"></activity>
         <activity
-            android:name=".activities.TaskFormActivity"
+            android:name=".controllers.activities.TaskFormActivity"
             android:label="@string/app_name"></activity>
     </application>
 

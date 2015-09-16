@@ -5,12 +5,20 @@
     <string name="lbl_login">Login</string>
     <string name="lbl_password">Password</string>
     <string name="lbl_enter">Login</string>
-    <string name="msg_welcome">Welcome %s!</string>
+    <string name="lbl_menu_editar">Update</string>
+    <string name="lbl_menu_excluir">Excluir</string>
     <string name="lbl_taskName">Task Name</string>
     <string name="lbl_taskDescription">Task Description</string>
-    <string name="button_saveTask">Save</string>
     <string name="lbl_menu_add">Task Add</string>
+    <string name="msg_welcome">Welcome %s!</string>
     <string name="msg_required">Field Required</string>
     <string name="msg_save_sucessfull">Save Sucessfull!</string>
+    <string name="button_saveTask">Save</string>
+    <string name="msg_delete_sucessfull">Register deleted sucessfull</string>
+    <string name="lbl_confirm">Confirm</string>
+    <string name="msg_confirm_delete">Want to delete this register?</string>
+    <string name="lbl_yes">Yes</string>
+    <string name="lbl_no">No</string>
+
 
 </resources>

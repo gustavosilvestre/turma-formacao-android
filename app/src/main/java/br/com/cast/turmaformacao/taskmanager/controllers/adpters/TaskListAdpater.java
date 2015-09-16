@@ -1,4 +1,4 @@
-package br.com.cast.turmaformacao.taskmanager.adpters;
+package br.com.cast.turmaformacao.taskmanager.controllers.adpters;
 
 import android.app.Activity;
 import android.view.View;

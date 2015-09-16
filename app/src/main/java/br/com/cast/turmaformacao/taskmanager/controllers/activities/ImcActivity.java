@@ -1,4 +1,4 @@
-package br.com.cast.turmaformacao.taskmanager.activities;
+package br.com.cast.turmaformacao.taskmanager.controllers.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
