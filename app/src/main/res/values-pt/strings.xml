@@ -20,5 +20,9 @@
     <string name="msg_confirm_delete">Deseja excluir esse registro?</string>
     <string name="lbl_yes">Sim</string>
     <string name="lbl_no">Não</string>
+    <string name="lbl_label_name">Name</string>
+    <string name="lbl_label_description">Description</string>
+    <string name="menu_label_add">Label Add</string>
+    <string name="lbl_label_add">Label Add</string>
 
 </resources>

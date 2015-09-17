@@ -19,6 +19,10 @@
     <string name="msg_confirm_delete">Want to delete this register?</string>
     <string name="lbl_yes">Yes</string>
     <string name="lbl_no">No</string>
+    <string name="lbl_label_name">Name</string>
+    <string name="lbl_label_description">Description</string>
+    <string name="menu_label_add">Label Add</string>
+    <string name="lbl_label_add">Label Add</string>
 
 
 </resources>

@@ -50,8 +50,6 @@ public class TaskListActivity extends AppCompatActivity {
                 return false;
             }
         });
-
-
     }
 
     @Override

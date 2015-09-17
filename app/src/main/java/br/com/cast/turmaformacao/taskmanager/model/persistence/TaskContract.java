@@ -6,6 +6,7 @@ import android.database.Cursor;
 import java.util.ArrayList;
 import java.util.List;
 
+import br.com.cast.turmaformacao.taskmanager.model.entities.Label;
 import br.com.cast.turmaformacao.taskmanager.model.entities.Task;
 
 /**
@@ -17,6 +18,7 @@ public final class TaskContract {
     public static final String ID = "id";
     public static final String NAME = "name";
     public static final String DESCRIPTION = "description";
+
 
     public static final String[] COLUNS = {ID, NAME, DESCRIPTION};
 
