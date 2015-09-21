@@ -59,6 +59,8 @@ public class Label implements Parcelable {
         this.color = color;
     }
 
+
+
     @Override
     public int describeContents() {
         return 0;
@@ -72,6 +74,8 @@ public class Label implements Parcelable {
         dest.writeString(description == null ? "" : description);
 
     }
+
+
 
     public void readFromParcel(Parcel imp) {
 

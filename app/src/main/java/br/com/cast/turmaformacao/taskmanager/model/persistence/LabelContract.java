@@ -71,8 +71,6 @@ public class LabelContract {
 
     public static List<Label> getLabels(Cursor cursor) {
 
-        Label label = new Label();
-
         List<Label> labels = new ArrayList<>();
 
         while (cursor.moveToNext()) {

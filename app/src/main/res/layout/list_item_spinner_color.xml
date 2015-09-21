@@ -2,15 +2,16 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="49dp">
+    android:layout_height="match_parent">
 
     <TextView
         android:id="@+id/spinnerItemColor"
+        android:background="#000000"
         android:textColor="#ffffff"
         android:text="Test"
         android:gravity="center"
         android:textStyle="bold"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="50dp" />
 
 </LinearLayout>

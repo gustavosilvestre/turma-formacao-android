@@ -60,6 +60,7 @@ public final class TaskRepository {
         DataBaseHelper dataBaseHelper = DataBaseHelper.getIstance();
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
         Cursor cursor = db.query(TaskContract.TABLE, TaskContract.COLUNS, null, null, null, null, TaskContract.ID);
+
         List<Task> values = TaskContract.getTasks(cursor);
 
         db.close();

@@ -33,6 +33,8 @@ public class DataBaseHelper extends SQLiteOpenHelper{
 
         Log.e("Task Manager", "Criando Tabela Label");
         db.execSQL(LabelContract.getCreateTableScript());
+
+        db.execSQL(UserContract.getCreateTableScript());
     }
 
     @Override

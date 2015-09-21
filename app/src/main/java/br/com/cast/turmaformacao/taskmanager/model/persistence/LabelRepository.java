@@ -55,6 +55,24 @@ public class LabelRepository {
         return values;
     }
 
+    public static Label getById(long id){
+
+        DataBaseHelper dataBaseHelper = DataBaseHelper.getIstance();
+        SQLiteDatabase db = dataBaseHelper.getWritableDatabase();
+
+        String where = LabelContract.ID + " = ? ";
+        String[] params = {String.valueOf(id)};
+
+        Cursor cursor = db.query(LabelContract.TABLE, LabelContract.COLUNS,where, params,null,null,null);
+
+        Label label = LabelContract.getLabel(cursor);
+
+        db.close();
+        dataBaseHelper.close();
+
+        return label;
+    }
+
     public static void delete(long id) {
 
         DataBaseHelper dataBaseHelper = DataBaseHelper.getIstance();

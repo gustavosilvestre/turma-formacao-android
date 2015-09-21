@@ -13,10 +13,7 @@ public class Task implements Parcelable {
     private Long id;
     private String name;
     private String description;
-
-    public Long getId() {
-        return id;
-    }
+    private Label label;
 
     public Task() {
         super();
@@ -26,6 +23,19 @@ public class Task implements Parcelable {
         super();
         readFromParcel(imp);
     }
+
+    public Long getId() {
+        return id;
+    }
+
+    public Label getLabel() {
+        return label;
+    }
+
+    public void setLabel(Label label) {
+        this.label = label;
+    }
+
 
     public void setId(Long id) {
         this.id = id;
@@ -47,35 +57,7 @@ public class Task implements Parcelable {
         this.description = description;
     }
 
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
 
-        Task task = (Task) o;
-
-        if (!id.equals(task.id)) return false;
-        if (!name.equals(task.name)) return false;
-        return description.equals(task.description);
-
-    }
-
-    @Override
-    public int hashCode() {
-        int result = id.hashCode();
-        result = 31 * result + name.hashCode();
-        result = 31 * result + description.hashCode();
-        return result;
-    }
-
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id=" + id +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                '}';
-    }
 
     @Override
     public int describeContents() {

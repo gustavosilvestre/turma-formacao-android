@@ -34,4 +34,10 @@
         android:layout_height="wrap_content"
         android:hint="@string/lbl_label_description" />
 
+    <Button
+        android:id="@+id/buttonListar"
+        android:text="Listar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
 </LinearLayout>

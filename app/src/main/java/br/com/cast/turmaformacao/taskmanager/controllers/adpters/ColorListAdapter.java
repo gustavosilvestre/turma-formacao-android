@@ -22,11 +22,12 @@ public class ColorListAdapter extends BaseAdapter {
 
     private Color[] values;
     private Activity context;
+    private int tipo_layout;
 
-    public ColorListAdapter(Activity context, Color[] values) {
+    public ColorListAdapter(Activity context) {
         super();
         this.context = context;
-        this.values = values;
+        this.values = Color.values();
     }
 
     @Override
@@ -51,16 +52,12 @@ public class ColorListAdapter extends BaseAdapter {
 
         View listItem = context.getLayoutInflater().inflate(R.layout.list_item_spinner_color, parent, false);
 
-        int cor = 0;
-        try {
-            cor = android.graphics.Color.parseColor(color.getHex());
-        }catch (Exception e){
-            Log.e("task manager", "Cor Errada : " + color);
-        }
+        int cor = android.graphics.Color.parseColor(color.getHex());
+
         TextView background = (TextView) listItem.findViewById(R.id.spinnerItemColor);
+
         background.setBackgroundColor(cor);
         background.setText(color.toString());
-
 
         return listItem;
     }

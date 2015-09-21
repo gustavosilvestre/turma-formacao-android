@@ -17,10 +17,26 @@
         android:hint="@string/lbl_password"
         android:password="true" />
 
-    <Button
-        android:id="@+id/buttonLogin"
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/lbl_enter" />
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/buttonLogin"
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/lbl_enter" />
+
+        <Button
+            android:layout_weight="1"
+            android:id="@+id/buttonForgetPassword"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="Forget Password ?" />
+
+    </LinearLayout>
+
 
 </LinearLayout>
