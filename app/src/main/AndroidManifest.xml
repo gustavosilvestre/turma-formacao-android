@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="br.com.cast.turmaformacao.taskmanager">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         android:name=".TaskManagerApplication.TaskManagerApplication"
         android:allowBackup="true"
@@ -14,6 +16,7 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
         </activity>
         <activity
@@ -45,6 +48,10 @@
             android:name=".controllers.activities.LabelListActivity"
             android:label="@string/app_name">
 
+        </activity>
+        <activity
+            android:name=".controllers.activities.MenuPrincipalActivity"
+            android:label="Menu Principal">
         </activity>
     </application>
 

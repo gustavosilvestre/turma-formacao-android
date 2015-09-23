@@ -73,8 +73,8 @@ public class TaskListActivity extends AppCompatActivity {
 
     @Override
     protected void onResume() {
-        onUpdateList();
         super.onResume();
+        onUpdateList();
     }
 
     private void onUpdateList() {
@@ -100,7 +100,6 @@ public class TaskListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_excluir:
                 onMenuDeleteClick();
-                onUpdateList();
                 break;
             case R.id.menu_editar:
                 onMenuUpdateClick();
@@ -127,10 +126,10 @@ public class TaskListActivity extends AppCompatActivity {
                     @Override
                     public void onClick(DialogInterface dialog, int which) {
                         TaskBusinessServices.delete(selectedTask);
+                        onUpdateList();
                         selectedTask = null;
                         String message = getString(R.string.msg_delete_sucessfull);
                         Toast.makeText(TaskListActivity.this, message, Toast.LENGTH_LONG).show();
-
                     }
                 })
                 .setNeutralButton(R.string.lbl_no, null)

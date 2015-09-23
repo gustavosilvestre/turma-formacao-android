@@ -13,6 +13,7 @@ public class User implements Parcelable {
     private String password;
     private String name;
     private String email;
+    private Address endereco;
 
     public User() {
         super();

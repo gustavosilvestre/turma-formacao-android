@@ -7,14 +7,16 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="72dp">
 
         <TextView
             android:id="@+id/list_item_label_color"
-            android:layout_weight="1"
-            android:background="#ff0000"
-            android:layout_width="0dp"
-            android:layout_height="36dp" />
+            android:layout_marginLeft="5dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:background="@drawable/frame"
+            android:layout_width="60dp"
+            android:layout_height="match_parent" />
 
         <TextView
             android:id="@+id/list_item_label_name"
