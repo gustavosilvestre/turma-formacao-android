@@ -6,19 +6,30 @@
 
     <View
         android:id="@+id/list_item_task_color"
-        android:background="#00ffff"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_weight="2"
-        android:gravity="center"/>
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@drawable/frame" />
+
 
     <TextView
         android:id="@+id/list_item_task_name"
-        android:text="Nome"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_weight="8"
-        android:gravity="start|center"/>
+        android:layout_weight="4"
+        android:gravity="start|center"
+        android:paddingLeft="5dp"
+        android:text="Nome" />
+
+    <TextView
+        android:id="@+id/list_item_task_descrition"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="4"
+        android:gravity="start|center"
+        android:paddingLeft="5dp"
+        android:text="Description" />
 
 
 </LinearLayout>

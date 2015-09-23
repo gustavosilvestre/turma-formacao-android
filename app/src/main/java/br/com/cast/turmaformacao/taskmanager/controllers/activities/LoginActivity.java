@@ -58,20 +58,23 @@ public class LoginActivity extends AppCompatActivity {
 
     private void bindButtonLogin() {
         buttonLogin = (Button) findViewById(R.id.buttonLogin);
-
         buttonLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (validateLogin()) {
-                    Intent redirectToTaskList = new Intent(LoginActivity.this, TaskListActivity.class);
-                    startActivity(redirectToTaskList);
-                    finish();
-                } else {
-                    Toast.makeText(LoginActivity.this, "Login or Password are incorrect!", Toast.LENGTH_SHORT).show();
-                }
+                onButtonLoginClick();
             }
         });
+    }
+
+    private void onButtonLoginClick() {
+
+        if (validateLogin()) {
+            Intent redirectToTaskList = new Intent(LoginActivity.this, TaskListActivity.class);
+            startActivity(redirectToTaskList);
+            finish();
+        } else {
+            Toast.makeText(LoginActivity.this, getString(R.string.msg_login_password_incorrect), Toast.LENGTH_SHORT).show();
+        }
     }
 
     @Override

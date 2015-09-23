@@ -3,6 +3,7 @@ package br.com.cast.turmaformacao.taskmanager.model.persistence;
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.provider.ContactsContract;
 
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class LabelRepository {
         return values;
     }
 
-    public static Label getById(long id){
+    public static Label getById(long id) {
 
         DataBaseHelper dataBaseHelper = DataBaseHelper.getIstance();
         SQLiteDatabase db = dataBaseHelper.getWritableDatabase();
@@ -63,7 +64,7 @@ public class LabelRepository {
         String where = LabelContract.ID + " = ? ";
         String[] params = {String.valueOf(id)};
 
-        Cursor cursor = db.query(LabelContract.TABLE, LabelContract.COLUNS,where, params,null,null,null);
+        Cursor cursor = db.query(LabelContract.TABLE, LabelContract.COLUNS, where, params, null, null, null);
 
         Label label = LabelContract.getLabel(cursor);
 
@@ -72,6 +73,7 @@ public class LabelRepository {
 
         return label;
     }
+
 
     public static void delete(long id) {
 

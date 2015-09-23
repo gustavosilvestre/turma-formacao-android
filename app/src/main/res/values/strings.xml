@@ -6,7 +6,7 @@
     <string name="lbl_password">Password</string>
     <string name="lbl_enter">Login</string>
     <string name="lbl_menu_editar">Update</string>
-    <string name="lbl_menu_excluir">Excluir</string>
+    <string name="lbl_menu_excluir">Delete</string>
     <string name="lbl_taskName">Task Name</string>
     <string name="lbl_taskDescription">Task Description</string>
     <string name="lbl_menu_add">Task Add</string>
@@ -23,6 +23,8 @@
     <string name="lbl_label_description">Description</string>
     <string name="menu_label_add">Label Add</string>
     <string name="lbl_label_add">Label Add</string>
+    <string name="msg_label_register_sucessfull">Label registred sucessfull!</string>
+    <string name="msg_login_password_incorrect">Login or Password are incorrect!</string>
 
 
 </resources>

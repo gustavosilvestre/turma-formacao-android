@@ -24,5 +24,7 @@
     <string name="lbl_label_description">Description</string>
     <string name="menu_label_add">Label Add</string>
     <string name="lbl_label_add">Label Add</string>
+    <string name="msg_label_register_sucessfull">Label cadastrada com sucesso!</string>
+    <string name="msg_login_password_incorrect">Login ou senha esta incorreto!</string>
 
 </resources>

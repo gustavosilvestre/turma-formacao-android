@@ -4,6 +4,39 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <LinearLayout
+        android:background="@color/material_deep_teal_500"
+        android:layout_width="match_parent"
+        android:orientation="horizontal"
+        android:layout_height="wrap_content">
+
+        <TextView
+            android:text="Color"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:text="Name"
+            android:textColor="#ffffff"
+            android:layout_weight="4"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+        <TextView
+            android:layout_weight="4"
+            android:textColor="#ffffff"
+            android:text="Description"
+            android:layout_width="0dp"
+            android:gravity="center"
+            android:layout_height="wrap_content" />
+
+
+
+    </LinearLayout>
+
     <ListView
         android:id="@+id/listViewTaskList"
         android:layout_width="match_parent"

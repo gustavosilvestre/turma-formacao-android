@@ -4,6 +4,8 @@ import java.util.List;
 
 import br.com.cast.turmaformacao.taskmanager.model.entities.Label;
 import br.com.cast.turmaformacao.taskmanager.model.persistence.LabelRepository;
+import br.com.cast.turmaformacao.taskmanager.model.persistence.TaskContract;
+import br.com.cast.turmaformacao.taskmanager.model.persistence.TaskRepository;
 
 /**
  * Created by Administrador on 17/09/2015.
@@ -22,7 +24,20 @@ public class LabelBusinessServices {
         LabelRepository.save(label);
     }
 
-    public static void delete(Label label){
-        LabelRepository.delete(label.getId());
+    public static boolean delete(Label label){
+
+        if (TaskRepository.getCount(TaskContract.LABEL_ID,label.getId()) == 0){
+            LabelRepository.delete(label.getId());
+            return true;
+        }
+
+        return false;
+
+    }
+
+    public static Label getById(Long id){
+
+        return LabelRepository.getById(id);
+
     }
 }

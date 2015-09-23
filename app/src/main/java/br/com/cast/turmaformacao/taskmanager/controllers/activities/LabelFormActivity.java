@@ -18,6 +18,7 @@ import android.widget.SpinnerAdapter;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import br.com.cast.turmaformacao.taskmanager.R;
@@ -39,7 +40,7 @@ public class LabelFormActivity extends AppCompatActivity {
     private Label label;
     private Color colorSelect;
     private Button buttonListar;
-    private static final String PARAM_LABEL = "PARAM_LABEL";
+    public static final String PARAM_LABEL = "PARAM_LABEL";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,12 +48,23 @@ public class LabelFormActivity extends AppCompatActivity {
         setContentView(R.layout.activity_label_form);
 
         init();
-        bindSpinnerColor();
         bindEditTextName();
         bindEditTextDescription();
-
+        bindSpinnerColor();
+        bindButtonListarLabel();
     }
 
+    private void bindButtonListarLabel() {
+        buttonListar = (Button) findViewById(R.id.buttonListarLabel);
+        buttonListar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent gotoLabelListActivity = new Intent(LabelFormActivity.this, LabelListActivity.class);
+                startActivity(gotoLabelListActivity);
+                LabelFormActivity.this.finish();
+            }
+        });
+    }
 
 
     private void init() {
@@ -85,10 +97,16 @@ public class LabelFormActivity extends AppCompatActivity {
     }
 
     private void bindSpinnerColor() {
-
         spinnerColor = (Spinner) findViewById(R.id.spinnerColor);
         ColorListAdapter colorAdapter = new ColorListAdapter(LabelFormActivity.this);
         spinnerColor.setAdapter(colorAdapter);
+
+        List<Color> colors = new ArrayList<>(Arrays.asList(Color.values()));
+        int position = colors.indexOf(label.getColor());
+
+        if(position != -1){
+            spinnerColor.setSelection(position);
+        }
 
     }
 
@@ -112,13 +130,13 @@ public class LabelFormActivity extends AppCompatActivity {
 
     private void onMenuDoneClick() {
 
-        String msg = getResources().getString(R.string.msg_required);
+        String msgRequired = getResources().getString(R.string.msg_required);
 
-        if (!FormHelper.validateRequired(msg, editTextDescription, editTextName)) {
+        if (!FormHelper.validateRequired(msgRequired, editTextDescription, editTextName)) {
             bindLabel();
             LabelBusinessServices.save(this.label);
             colorSelect  = null;
-            Toast.makeText(this, LabelBusinessServices.findAll().toString(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this,getResources().getString(R.string.msg_label_register_sucessfull), Toast.LENGTH_SHORT).show();
         }
     }
 

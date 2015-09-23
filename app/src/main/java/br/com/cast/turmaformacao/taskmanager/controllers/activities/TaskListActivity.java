@@ -91,7 +91,7 @@ public class TaskListActivity extends AppCompatActivity {
 
     @Override
     public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        getMenuInflater().inflate(R.menu.menu_context_task_list, menu);
+        getMenuInflater().inflate(R.menu.menu_context_list, menu);
         super.onCreateContextMenu(menu, v, menuInfo);
     }
 
@@ -100,6 +100,7 @@ public class TaskListActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.menu_excluir:
                 onMenuDeleteClick();
+                onUpdateList();
                 break;
             case R.id.menu_editar:
                 onMenuUpdateClick();
@@ -128,7 +129,6 @@ public class TaskListActivity extends AppCompatActivity {
                         TaskBusinessServices.delete(selectedTask);
                         selectedTask = null;
                         String message = getString(R.string.msg_delete_sucessfull);
-                        onUpdateList();
                         Toast.makeText(TaskListActivity.this, message, Toast.LENGTH_LONG).show();
 
                     }

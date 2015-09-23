@@ -18,19 +18,34 @@
         </activity>
         <activity
             android:name=".controllers.activities.TaskListActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name">
+
+        </activity>
         <activity
             android:name=".controllers.activities.ImcActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name">
+
+        </activity>
         <activity
             android:name=".controllers.activities.TaskFormActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name">
+
+        </activity>
         <activity
             android:name=".controllers.activities.LabelFormActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name">
+
+        </activity>
         <activity
             android:name=".controllers.activities.UserFormActivity"
-            android:label="@string/app_name"></activity>
+            android:label="@string/app_name">
+
+        </activity>
+        <activity
+            android:name=".controllers.activities.LabelListActivity"
+            android:label="@string/app_name">
+
+        </activity>
     </application>
 
 </manifest>

@@ -1,9 +1,17 @@
 package br.com.cast.turmaformacao.taskmanager.controllers.adpters;
 
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.ColorFilter;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.List;
@@ -39,6 +47,7 @@ public class TaskListAdpater extends BaseAdapter {
         return position;
     }
 
+
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         Task task = getItem(position);
@@ -49,10 +58,13 @@ public class TaskListAdpater extends BaseAdapter {
 
         int hexColor = android.graphics.Color.parseColor(task.getLabel().getColor().getHex());
 
-        viewColor.setBackgroundColor(hexColor);
+        viewColor.getBackground().setColorFilter(hexColor,PorterDuff.Mode.SRC);
 
         TextView textViewName = (TextView) taskListItemView.findViewById(R.id.list_item_task_name);
         textViewName.setText(task.getName());
+
+        TextView textViewDescription = (TextView) taskListItemView.findViewById(R.id.list_item_task_descrition);
+        textViewDescription.setText(task.getDescription());
 
         return taskListItemView;
     }

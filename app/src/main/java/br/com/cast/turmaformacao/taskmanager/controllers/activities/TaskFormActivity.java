@@ -6,15 +6,15 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import java.util.List;
 
 import br.com.cast.turmaformacao.taskmanager.R;
-import br.com.cast.turmaformacao.taskmanager.controllers.adpters.LabelAdapter;
+import br.com.cast.turmaformacao.taskmanager.controllers.adpters.LabelListAdapter;
 import br.com.cast.turmaformacao.taskmanager.model.entities.Label;
 import br.com.cast.turmaformacao.taskmanager.model.entities.Task;
 import br.com.cast.turmaformacao.taskmanager.model.services.LabelBusinessServices;
@@ -30,7 +30,7 @@ public class TaskFormActivity extends AppCompatActivity {
     private EditText editTextDescription;
     private Spinner spinner;
     private Task task;
-    private Button buttonNewLabel;
+    private ImageButton buttonNewLabel;
     public static final String PARAM_TASK = "PARAM_TASK";
 
     @Override
@@ -46,14 +46,18 @@ public class TaskFormActivity extends AppCompatActivity {
     }
 
     private void bindButtonNewLabel() {
-        buttonNewLabel = (Button) findViewById(R.id.task_form_button_newLabel);
+        buttonNewLabel = (ImageButton) findViewById(R.id.task_form_button_newLabel);
         buttonNewLabel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent gotoLabelFormActivity = new Intent(TaskFormActivity.this, LabelFormActivity.class);
-                startActivity(gotoLabelFormActivity);
+                onButtoNewLabelClick();
             }
         });
+    }
+
+    private void onButtoNewLabelClick() {
+        Intent gotoLabelFormActivity = new Intent(TaskFormActivity.this, LabelFormActivity.class);
+        startActivity(gotoLabelFormActivity);
     }
 
     @Override
@@ -69,7 +73,10 @@ public class TaskFormActivity extends AppCompatActivity {
 
     private void onUpdateSpinnerList() {
         List<Label> labels = LabelBusinessServices.findAll();
-        spinner.setAdapter(new LabelAdapter(TaskFormActivity.this, labels));
+        spinner.setAdapter(new LabelListAdapter(TaskFormActivity.this,labels,R.layout.list_item_label_task_form));
+        if (task.getLabel() != null) {
+            spinner.setSelection(labels.indexOf(task.getLabel()));
+        }
     }
 
 
@@ -84,21 +91,12 @@ public class TaskFormActivity extends AppCompatActivity {
     }
 
 
-    public void onMenuDoneClick() {
-        String requiredMessage = TaskFormActivity.this.getString(R.string.msg_required);
-
-        if (!FormHelper.validateRequired(requiredMessage, editTextName)) {
-            bindTask();
-            TaskBusinessServices.save(task);
-            Toast.makeText(TaskFormActivity.this, getString(R.string.msg_save_sucessfull), Toast.LENGTH_LONG).show();
-            TaskFormActivity.this.finish();
-        }
-    }
-
-
     private void bindTask() {
         task.setName(editTextName.getText().toString());
         task.setDescription(editTextDescription.getText().toString());
+    }
+
+    private void bindLabel() {
         Label label = (Label) spinner.getSelectedItem();
         task.setLabel(label);
     }
@@ -131,8 +129,14 @@ public class TaskFormActivity extends AppCompatActivity {
     }
 
     private void onMenuTaskDone() {
-        bindTask();
-        TaskBusinessServices.save(task);
-        Toast.makeText(TaskFormActivity.this, "Task save sucessfull", Toast.LENGTH_SHORT).show();
+
+        String msg = getResources().getString(R.string.msg_required);
+
+        if (!FormHelper.validateRequired(msg, editTextName, editTextDescription)) {
+            bindTask();
+            bindLabel();
+            TaskBusinessServices.save(task);
+            Toast.makeText(TaskFormActivity.this, "Task save sucessfull", Toast.LENGTH_SHORT).show();
+        }
     }
 }

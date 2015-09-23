@@ -20,7 +20,7 @@ public final class TaskBusinessServices {
         List<Task> all = TaskRepository.getAll();
 
         for(Task task : all) {
-            task.setLabel(LabelRepository.getById(task.getId()));
+            task.setLabel(LabelRepository.getById(task.getLabel().getId()));
         }
 
         return all;

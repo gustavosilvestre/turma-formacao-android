@@ -58,7 +58,6 @@ public class Task implements Parcelable {
     }
 
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -66,19 +65,18 @@ public class Task implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-
         dest.writeLong(id == null ? -1 : id);
         dest.writeString(name == null ? "" : name);
         dest.writeString(description == null ? "" : description);
+        dest.writeParcelable(label, flags);
     }
 
     public void readFromParcel(Parcel imp) {
-
         id = imp.readLong();
         id = id == -1 ? null : id;
         name = imp.readString();
         description = imp.readString();
-
+        label = imp.readParcelable(Label.class.getClassLoader());
     }
 
     public static final Parcelable.Creator<Task> CREATOR = new Parcelable.Creator<Task>() {
@@ -94,8 +92,6 @@ public class Task implements Parcelable {
         }
 
     };
-
-
 
 
 }
