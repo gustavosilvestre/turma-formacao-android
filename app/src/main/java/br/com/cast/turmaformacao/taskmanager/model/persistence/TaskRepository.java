@@ -70,19 +70,37 @@ public final class TaskRepository {
 
     }
 
-
-    public static int getCount(String colum,Long id){
+    public static int getCount(String colum, Long id) {
 
         DataBaseHelper dataBaseHelper = DataBaseHelper.getIstance();
         SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
 
         String where = colum + " = ? ";
         String[] params = {String.valueOf(id)};
-        Cursor cursor = db.query(TaskContract.TABLE,TaskContract.COLUNS,where,params,null,null,null);
+        Cursor cursor = db.query(TaskContract.TABLE, TaskContract.COLUNS, where, params, null, null, null);
 
         List<Task> lista = TaskContract.getTasks(cursor);
 
         return lista.size();
     }
 
+    public static Long getIdByWebId(Long web_id) {
+
+
+        DataBaseHelper dataBaseHelper = DataBaseHelper.getIstance();
+        SQLiteDatabase db = dataBaseHelper.getReadableDatabase();
+
+        String where = TaskContract.WEB_ID + " = ? ";
+        String params[] = {String.valueOf(web_id)};
+
+        Cursor cursor = db.query(TaskContract.TABLE, TaskContract.COLUNS, where, params, null, null, null);
+
+        Task task = TaskContract.getTask(cursor);
+
+        dataBaseHelper.close();
+        db.close();
+
+        return task == null ? null : task.getId();
+
+    }
 }

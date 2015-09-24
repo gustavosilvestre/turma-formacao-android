@@ -1,11 +1,15 @@
 package br.com.cast.turmaformacao.taskmanager.controllers.activities;
 
+import android.app.ProgressDialog;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import br.com.cast.turmaformacao.taskmanager.R;
@@ -30,27 +34,40 @@ public class UserFormActivity extends AppCompatActivity{
     private EditText editTextStreet;
     private EditText editTextNeighborhood;
     private EditText editTextState;
+    private Button buttonSearch;
+    private ProgressDialog progressDialog;
 
     private User user;
 
     private class GetAddressTask extends AsyncTask<String,Void,Address> {
 
-
         @Override
         protected Address doInBackground(String... params) {
 
-            return AddressService.getAddressByZipCode(params[0]);
+            return AddressService.getAdressByZipCode(params[0]);
         }
 
         @Override
         protected void onPostExecute(Address address) {
             super.onPostExecute(address);
+
+            editTextCity.setText(address.getCity());
+            editTextNeighborhood.setText(address.getNeighborhood());
+            editTextState.setText(address.getState());
+            editTextStreet.setText(address.getStreet());
+            editTextType.setText(address.getType());
+            editTextZipCode.setText(address.getZipCode());
+
+            progressDialog.dismiss();
         }
 
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
+            progressDialog = new ProgressDialog(UserFormActivity.this);
+            progressDialog.setMessage("Buscando CEP...");
+            progressDialog.show();
         }
     }
 
@@ -65,8 +82,20 @@ public class UserFormActivity extends AppCompatActivity{
         bindEditTextPassword();
         bindEditTextName();
         bindAddress();
+        bindButtonSearch();
 
+    }
 
+    private void bindButtonSearch() {
+        buttonSearch = (Button) findViewById(R.id.user_form_buttoBuscar);
+        buttonSearch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String zipCode = editTextZipCode.getText().toString();
+
+                new GetAddressTask().execute(zipCode);
+            }
+        });
     }
 
     private void bindAddress(){

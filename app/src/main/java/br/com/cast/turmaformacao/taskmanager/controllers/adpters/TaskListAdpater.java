@@ -55,8 +55,13 @@ public class TaskListAdpater extends BaseAdapter {
         View taskListItemView = context.getLayoutInflater().inflate(R.layout.list_item_task, parent, false);
 
         View viewColor = taskListItemView.findViewById(R.id.list_item_task_color);
+        String color = "#ffffff";
 
-        int hexColor = android.graphics.Color.parseColor(task.getLabel().getColor().getHex());
+        if(task.getLabel() != null){
+            color = task.getLabel().getColor().getHex();
+        }
+
+        int hexColor = android.graphics.Color.parseColor(color);
 
         viewColor.getBackground().setColorFilter(hexColor,PorterDuff.Mode.SRC);
 

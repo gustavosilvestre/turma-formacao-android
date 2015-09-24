@@ -17,6 +17,7 @@ import br.com.cast.turmaformacao.taskmanager.R;
 import br.com.cast.turmaformacao.taskmanager.controllers.adpters.LabelListAdapter;
 import br.com.cast.turmaformacao.taskmanager.model.entities.Label;
 import br.com.cast.turmaformacao.taskmanager.model.entities.Task;
+import br.com.cast.turmaformacao.taskmanager.model.http.TaskService;
 import br.com.cast.turmaformacao.taskmanager.model.services.LabelBusinessServices;
 import br.com.cast.turmaformacao.taskmanager.model.services.TaskBusinessServices;
 import br.com.cast.turmaformacao.taskmanager.util.FormHelper;
@@ -135,7 +136,8 @@ public class TaskFormActivity extends AppCompatActivity {
         if (!FormHelper.validateRequired(msg, editTextName, editTextDescription)) {
             bindTask();
             bindLabel();
-            TaskBusinessServices.save(task);
+            //TaskBusinessServices.save(task);
+            TaskService.save(task);
             Toast.makeText(TaskFormActivity.this, "Task save sucessfull", Toast.LENGTH_SHORT).show();
         }
     }

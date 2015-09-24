@@ -1,10 +1,13 @@
 package br.com.cast.turmaformacao.taskmanager.controllers.activities;
 
 import android.app.AlertDialog;
+import android.app.ProgressDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -13,11 +16,13 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import br.com.cast.turmaformacao.taskmanager.R;
 import br.com.cast.turmaformacao.taskmanager.controllers.adpters.TaskListAdpater;
 import br.com.cast.turmaformacao.taskmanager.model.entities.Task;
+import br.com.cast.turmaformacao.taskmanager.model.http.TaskService;
 import br.com.cast.turmaformacao.taskmanager.model.services.TaskBusinessServices;
 
 /**
@@ -28,11 +33,37 @@ public class TaskListActivity extends AppCompatActivity {
     private ListView listViewTaskList;
     private Task selectedTask;
 
+    private class TaskServiceClass extends AsyncTask<Void, Void, Void> {
+
+        private ProgressDialog progressDialog;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            progressDialog = new ProgressDialog(TaskListActivity.this);
+            progressDialog.setMessage("Atualizando Lista de Tarefas");
+            progressDialog.show();
+        }
+
+        @Override
+        protected Void doInBackground(Void... params) {
+            TaskBusinessServices.syncronized();
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void param) {
+            super.onPostExecute(param);
+            onUpdateList();
+            progressDialog.dismiss();
+        }
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task_list);
-
         bindTaskList();
     }
 
@@ -63,12 +94,21 @@ public class TaskListActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
 
         switch (item.getItemId()) {
-            case R.id.menu_add:
+            case R.id.menu_task_list_add:
                 onMenuAddClick();
+                break;
+            case R.id.menu_task_list_update:
+                onMenuAddUpdate();
                 break;
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    private void onMenuAddUpdate() {
+
+        new TaskServiceClass().execute();
+
     }
 
     @Override
@@ -111,7 +151,7 @@ public class TaskListActivity extends AppCompatActivity {
     private void onMenuUpdateClick() {
 
         Intent goToTaskForm = new Intent(TaskListActivity.this, TaskFormActivity.class);
-        goToTaskForm.putExtra(TaskFormActivity.PARAM_TASK,selectedTask);
+        goToTaskForm.putExtra(TaskFormActivity.PARAM_TASK, selectedTask);
         startActivity(goToTaskForm);
 
 
