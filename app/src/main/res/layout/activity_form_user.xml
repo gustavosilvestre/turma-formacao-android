@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:isScrollContainer="true"
     android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/user_form_login"
@@ -30,80 +36,87 @@
             android:hint="Email" />
 
         <TextView
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:textSize="20dp"
-            android:text="Endereço"
-            android:gravity="center"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textStyle="bold"
+            android:background="#c7c7c7"
+            android:text="Endereço"
+            android:textSize="30sp" />
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
 
             <EditText
                 android:id="@+id/user_form_zipcode"
-                android:hint="CEP"
-                android:layout_weight="2"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="2"
+                android:hint="CEP" />
 
             <Button
                 android:id="@+id/user_form_buttoBuscar"
-                android:layout_weight="1"
-                android:text="Buscar"
                 android:layout_width="50dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Buscar" />
 
         </LinearLayout>
 
         <EditText
             android:id="@+id/user_form_type"
-            android:hint="Logradouro"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
-
-        <EditText
-            android:id="@+id/user_form_numero"
-            android:hint="Numero"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Logradouro" />
 
         <EditText
             android:id="@+id/user_form_street"
-            android:hint="Rua"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Rua" />
 
         <EditText
-            android:id="@+id/user_form_neighborhood"
-            android:hint="Bairro"
+            android:id="@+id/user_form_numero"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:hint="Numero" />
+
 
         <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <EditText
+                android:id="@+id/user_form_neighborhood"
+                android:layout_width="0dp"
+                android:layout_weight="3"
+                android:layout_height="wrap_content"
+                android:hint="Bairro" />
 
             <EditText
                 android:id="@+id/user_form_city"
-                android:hint="Cidade"
-                android:layout_weight="4"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="3"
+                android:hint="Cidade" />
+
 
             <EditText
+                android:gravity="center"
                 android:id="@+id/user_form_state"
-                android:hint="UF"
-                android:layout_weight="1"
                 android:layout_width="0dp"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:hint="UF" />
 
 
         </LinearLayout>
 
+    </LinearLayout>
 
-</LinearLayout>
+</ScrollView>
