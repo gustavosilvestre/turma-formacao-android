@@ -1,5 +1,9 @@
 package br.com.cast.turmaformacao.taskmanager.model.http;
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> origin/master
 import android.util.Log;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.InputStream;
@@ -44,6 +48,7 @@ public final class AddressService {
             conn.disconnect();
 
         } catch (Exception e) {
+<<<<<<< HEAD
             Log.e(e.getClass().toString(), e.getMessage());
         }
 
@@ -52,3 +57,14 @@ public final class AddressService {
 
     }
 }
+=======
+           Log.e(e.getClass().toString(), e.getMessage());
+        }
+
+
+
+        return address;
+
+    }
+}
+>>>>>>> origin/master

@@ -1,10 +1,8 @@
 package br.com.cast.turmaformacao.taskmanager.controllers.activities;
 
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,10 +11,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import br.com.cast.turmaformacao.taskmanager.R;
-import br.com.cast.turmaformacao.taskmanager.model.entities.Address;
 import br.com.cast.turmaformacao.taskmanager.model.entities.User;
-import br.com.cast.turmaformacao.taskmanager.model.http.AddressService;
-import br.com.cast.turmaformacao.taskmanager.model.persistence.UserRepository;
 import br.com.cast.turmaformacao.taskmanager.model.services.UserBusinessServices;
 
 /**
