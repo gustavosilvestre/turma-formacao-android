@@ -24,6 +24,7 @@ import br.com.cast.turmaformacao.taskmanager.controllers.adpters.TaskListAdpater
 import br.com.cast.turmaformacao.taskmanager.model.entities.Task;
 import br.com.cast.turmaformacao.taskmanager.model.http.TaskService;
 import br.com.cast.turmaformacao.taskmanager.model.services.TaskBusinessServices;
+import br.com.cast.turmaformacao.taskmanager.util.FormHelper;
 
 /**
  * Created by Administrador on 15/09/2015.
@@ -48,6 +49,7 @@ public class TaskListActivity extends AppCompatActivity {
         @Override
         protected Void doInBackground(Void... params) {
             TaskBusinessServices.syncronized();
+
 
             return null;
         }
@@ -106,9 +108,7 @@ public class TaskListActivity extends AppCompatActivity {
     }
 
     private void onMenuAddUpdate() {
-
         new TaskServiceClass().execute();
-
     }
 
     @Override

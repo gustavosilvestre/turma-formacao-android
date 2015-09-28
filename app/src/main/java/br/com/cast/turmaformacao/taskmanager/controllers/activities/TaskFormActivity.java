@@ -136,7 +136,7 @@ public class TaskFormActivity extends AppCompatActivity {
         if (!FormHelper.validateRequired(msg, editTextName, editTextDescription)) {
             bindTask();
             bindLabel();
-            //TaskBusinessServices.save(task);
+            TaskBusinessServices.save(task);
             TaskService.save(task);
             Toast.makeText(TaskFormActivity.this, "Task save sucessfull", Toast.LENGTH_SHORT).show();
         }

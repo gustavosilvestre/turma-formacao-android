@@ -1,5 +1,7 @@
 package br.com.cast.turmaformacao.taskmanager.util;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
 import android.widget.EditText;
 
 /**
@@ -26,5 +28,7 @@ public final class FormHelper {
 
         return hasRequired;
     }
+
+
 
 }
