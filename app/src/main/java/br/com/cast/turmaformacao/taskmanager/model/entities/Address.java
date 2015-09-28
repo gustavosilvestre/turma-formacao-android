@@ -2,10 +2,7 @@ package br.com.cast.turmaformacao.taskmanager.model.entities;
 
 import android.os.Parcel;
 import android.os.Parcelable;
-<<<<<<< HEAD
-=======
 
->>>>>>> origin/master
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
